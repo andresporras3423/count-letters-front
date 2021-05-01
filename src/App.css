@@ -1,22 +1,22 @@
-.App {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-.options{
-  width: 300px;
-  display: grid;
-  grid-template-columns: 1fr;
+.links-container{
+  background-color: rgb(52, 58, 64);
+  color: white;
+  display: flex;
 }
 
-.options > * {
-  margin: 10px;
+.links-container > * {
+  margin: 15px;
+}
+
+.links-container > *:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
