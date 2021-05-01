@@ -1,10 +1,22 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.options{
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.options > * {
+  margin: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
