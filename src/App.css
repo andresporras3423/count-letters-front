@@ -3,20 +3,64 @@
   pointer-events: none;
 }
 
-.links-container{
-  background-color: rgb(52, 58, 64);
+.navbar {
+  overflow: hidden;
+  background-color: #333; 
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
   color: white;
-  display: flex;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-.links-container > * {
-  margin: 15px;
+.subnav {
+  float: left;
+  overflow: hidden;
 }
 
-.links-container > *:hover {
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-color: white;
+.subnav .subnavbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.subnav:hover .subnavbtn {
+  background-color: grey;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: grey;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 14px 16px;
+  font-size: 16px;
+}
+
+.navbar button:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
 }
 
 @media (prefers-reduced-motion: no-preference) {

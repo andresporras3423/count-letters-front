@@ -10,9 +10,9 @@ function App() {
 const [page, setPage] = useState('0');
 
 const setSelectedPage = ()=>{
-  if(page=='0') return (<Instructions/>);
-  else if(page=='1') return (<Play/>);
-  else if(page=='2') return (<Settings/>);
+  if(page==='0') return (<Instructions/>);
+  else if(page==='1') return (<Play/>);
+  else if(page==='2') return (<Settings/>);
   else  return (<Feedback/>);
 }
   return (
