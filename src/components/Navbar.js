@@ -4,37 +4,25 @@ function Navbar(props) {
   return (
     <div class="navbar">
       <div class="subnav">
-      <button class="subnavbtn">Home</button>
+      <button class="subnavbtn">Instructions</button>
       </div>
     <div class="subnav">
-      <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
-      <div class="subnav-content">
-        <button>Company</button>
-        <button>Team</button>
-        <button>Careers</button>
-      </div>
-    </div> 
-    <div class="subnav">
-      <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
-      <div class="subnav-content">
-      <button>Bring</button>
-      <button>Deliver</button>
-      <button>Package</button>
-      <button>Express</button>
-      </div>
-    </div> 
-    <div class="subnav">
-      <button class="subnavbtn">Partners <i class="fa fa-caret-down"></i></button>
-      <div class="subnav-content">
-      <button>Link 1</button>
-      <button>Link 2</button>
-      <button>Link 3</button>
-      <button>Link 4</button>
-      </div>
+      <button class="subnavbtn">Play</button>
     </div>
     <div class="subnav">
-      <button class="subnavbtn">Contact</button>
+      <button class="subnavbtn">Settings <i class="fa fa-caret-down"></i></button>
+    </div> 
+    <div class="subnav">
+      <button class="subnavbtn">Game feedback<i class="fa fa-caret-down"></i></button>
+      <div class="subnav-content">
+      <button>Top scores</button>
+      <button>Recent scores</button>
+      <button>Most errors</button>
+      <button>Most corrects</button>
+      <button>Recent errors</button>
+      <button>Recent corrects</button>
       </div>
+    </div>
   </div>
   );
 }
