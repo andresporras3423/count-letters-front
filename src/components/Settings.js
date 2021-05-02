@@ -42,14 +42,14 @@ function Settings() {
     else return (<></>)
   }
     return (
-      <div>
+      <div class="settings-parent">
         <div class="settings">
         <label>whitespaces: </label>
-          <input type="text" value={configData['whitespaces']} onChange={(e)=>typeSetting('whitespaces', e.target.value)}></input>
+          <input type="number" value={configData['whitespaces']} onChange={(e)=>typeSetting('whitespaces', e.target.value)}></input>
           <label>total letters:</label>
-          <input type="text" value={configData['total_letters']}  onChange={(e)=>typeSetting('total_letters', e.target.value)}></input>
+          <input type="number" value={configData['total_letters']}  onChange={(e)=>typeSetting('total_letters', e.target.value)}></input>
           <label>questions:</label>
-          <input type="text" value={configData['questions']}  onChange={(e)=>typeSetting('questions', e.target.value)}></input>
+          <input type="number" value={configData['questions']}  onChange={(e)=>typeSetting('questions', e.target.value)}></input>
           <button className="btn btn-dark" onClick={updateSettings}>Update</button>
         </div>
           {successMessage()}

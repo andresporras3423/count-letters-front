@@ -56,12 +56,15 @@
   display: block;
 }
 
+.settings-parent{
+  padding: 25px;
+}
+
 .settings{
   width: 300px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
-  margin: 25px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
