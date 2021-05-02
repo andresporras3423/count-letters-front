@@ -7,11 +7,22 @@ export const getConfigData = async () => {
       },
     });
     const data = await response.json();
-    return data.map((conf)=>{
-        let obj = new Object();
-        obj[`${conf.property}`]=parseInt(conf.val);
-        return obj;
-    });
+    const opts = new Object();
+    data.forEach((conf)=>opts[conf.property]=parseInt(conf.val));
+    return opts;
 };
 
-export default {getConfigData}
+export const updateConfigData = async (property, val) => {
+  const response = await fetch(`https://lit-shelf-55398.herokuapp.com/config_game/update`, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({property: property, val: val})
+    });
+    const data = await response;
+    return data;
+};
+
+export default {getConfigData, updateConfigData}

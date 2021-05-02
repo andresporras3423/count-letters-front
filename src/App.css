@@ -3,7 +3,7 @@
   pointer-events: none;
 }
 
-.navbar {
+.myNavbar {
   overflow: hidden;
   background-color: #333; 
   margin-bottom: 50px;
@@ -46,7 +46,7 @@
   font-size: 16px;
 }
 
-.navbar button:hover {
+.myNavbar button:hover {
   background-color: #eee;
   color: black;
   cursor: pointer;
@@ -54,6 +54,13 @@
 
 .subnav:hover .subnav-content {
   display: block;
+}
+
+.settings{
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
