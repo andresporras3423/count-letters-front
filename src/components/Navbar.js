@@ -4,16 +4,16 @@ function Navbar(props) {
   return (
     <div class="navbar">
       <div class="subnav">
-      <button class="subnavbtn">Instructions</button>
+      <button class="subnavbtn" onClick={()=>setPage('0')}>Instructions</button>
       </div>
     <div class="subnav">
-      <button class="subnavbtn">Play</button>
+      <button class="subnavbtn" onClick={()=>setPage('1')}>Play</button>
     </div>
     <div class="subnav">
-      <button class="subnavbtn">Settings <i class="fa fa-caret-down"></i></button>
+      <button class="subnavbtn" onClick={()=>setPage('2')}>Settings <i class="fa fa-caret-down"></i></button>
     </div> 
     <div class="subnav">
-      <button class="subnavbtn">Game feedback<i class="fa fa-caret-down"></i></button>
+      <button class="subnavbtn" onClick={()=>setPage('3')}>Game feedback<i class="fa fa-caret-down"></i></button>
       <div class="subnav-content">
       <button>Top scores</button>
       <button>Recent scores</button>
