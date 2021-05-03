@@ -9,7 +9,7 @@ const configReducer = (state = {
     case GET_CONFIG: return {
       ...state,
       whitespaces: action.whitespaces,
-      total_letter: action.total_letter,
+      total_letters: action.total_letters,
       questions: action.questions,
     }
     default: return state;

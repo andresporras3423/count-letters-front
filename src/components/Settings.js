@@ -1,28 +1,28 @@
-import { useEffect, useState } from 'react';
-import {getConfigData, updateConfigData} from './../data/configData';
+import {useState } from 'react';
+import {updateConfigData} from './../data/configData';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getConfig } from '../actions/index';
 
-function Settings() {
+function Settings(props) {
+  const {whitespaces, total_letters, questions, handleGetConfig} = props;
   const [configData, setConfigData] = useState({
-    'whitespaces': 0,
-   'total_letters': 0,
-  'questions': 0});
+  'whitespaces': whitespaces,
+  'total_letters': total_letters,
+  'questions': questions});
   const [messageStatus, setMessageStatus] = useState(0);
-  useEffect(async () => {
-    const data = await getConfigData();
-    setConfigData((()=>{
-      return {
-        ...configData,
-        'whitespaces': data['whitespaces'],
-        'total_letters': data['total_letters'],
-        'questions': data['questions'],
-      }
-    })());
-  }, []);
   const updateSettings = async ()=>{
     const answ1 = await updateConfigData('whitespaces', configData['whitespaces']);
     const answ2 = await updateConfigData('total_letters', configData['total_letters']);
     const answ3 = await updateConfigData('questions', configData['questions']);
-    if(answ1.status===200 && answ2.status===200 && answ3.status===200) setMessageStatus(1);
+    if(answ1.status===200 && answ2.status===200 && answ3.status===200) {
+      setMessageStatus(1);
+      handleGetConfig({
+        'whitespaces': configData['whitespaces'],
+        'total_letters': configData['total_letters'],
+        'questions': configData['questions'],
+      });
+    }
     else setMessageStatus(2);
   }
 
@@ -42,8 +42,8 @@ function Settings() {
     else return (<></>)
   }
     return (
-      <div class="settings-parent">
-        <div class="settings">
+      <div className="settings-parent">
+        <div className="settings">
         <label>whitespaces: </label>
           <input type="number" value={configData['whitespaces']} onChange={(e)=>typeSetting('whitespaces', e.target.value)}></input>
           <label>total letters:</label>
@@ -56,5 +56,31 @@ function Settings() {
       </div>
     );
   }
+
+  const mapDispatchToProps = dispatch => ({
+    handleGetConfig: nConfig => {
+      dispatch(getConfig(nConfig));
+    }
+  });
   
-  export default Settings;
+  const mapStateToProps = state => ({
+    whitespaces: state.config.whitespaces,
+    total_letters: state.config.total_letters,
+    questions: state.config.questions,
+    });
+  
+  Settings.propTypes = {
+    whitespaces: PropTypes.number,
+    total_letters: PropTypes.number,
+    questions: PropTypes.number,
+    handleGetConfig: PropTypes.func,
+  };
+  
+  Settings.defaultProps = {
+    whitespaces: 0,
+    total_letters: 0,
+    questions: 0,
+    handleGetConfig: null,
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Settings);

@@ -1,13 +1,28 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import '../App.css';
 import Navbar from './Navbar'; 
 import Instructions from './Instructions'; 
 import Play from './Play'; 
 import Settings from './Settings'; 
-import Feedback from './Feedback'; 
+import Feedback from './Feedback';
+import {getConfigData} from './../data/configData'; 
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getConfig } from '../actions/index';
 
-function App() {
+function App(props) {
+  const {handleGetConfig} = props;
 const [page, setPage] = useState('0');
+
+useEffect(async () => {
+  const data = await getConfigData();
+  console.log(data);
+  handleGetConfig({
+    'whitespaces': data['whitespaces'],
+    'total_letters': data['total_letters'],
+    'questions': data['questions'],
+  });
+}, []);
 
 const setSelectedPage = ()=>{
   if(page==='0') return (<Instructions/>);
@@ -23,4 +38,18 @@ const setSelectedPage = ()=>{
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  handleGetConfig: nConfig => {
+    dispatch(getConfig(nConfig));
+  }
+});
+
+App.propTypes = {
+  handleGetConfig: PropTypes.func,
+};
+
+App.defaultProps = {
+  handleGetConfig: null,
+};
+
+export default connect(null, mapDispatchToProps)(App);

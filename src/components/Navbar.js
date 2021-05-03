@@ -2,19 +2,19 @@ function Navbar(props) {
   const {setPage} = props;
 
   return (
-    <div class="myNavbar">
-      <div class="subnav">
-      <button class="subnavbtn" onClick={()=>setPage('0')}>Instructions</button>
+    <div className="myNavbar">
+      <div className="subnav">
+      <button className="subnavbtn" onClick={()=>setPage('0')}>Instructions</button>
       </div>
-    <div class="subnav">
-      <button class="subnavbtn" onClick={()=>setPage('1')}>Play</button>
+    <div className="subnav">
+      <button className="subnavbtn" onClick={()=>setPage('1')}>Play</button>
     </div>
-    <div class="subnav">
-      <button class="subnavbtn" onClick={()=>setPage('2')}>Settings</button>
+    <div className="subnav">
+      <button className="subnavbtn" onClick={()=>setPage('2')}>Settings</button>
     </div> 
-    <div class="subnav">
-      <button class="subnavbtn" onClick={()=>setPage('3')}>Game feedback <i class="fa fa-caret-down"></i></button>
-      <div class="subnav-content">
+    <div className="subnav">
+      <button className="subnavbtn" onClick={()=>setPage('3')}>Game feedback <i className="fa fa-caret-down"></i></button>
+      <div className="subnav-content">
       <button>Top scores</button>
       <button>Recent scores</button>
       <button>Most errors</button>
