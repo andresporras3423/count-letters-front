@@ -1,6 +1,7 @@
 import ScoreInfo from './ScoreInfo';
 import TopQuestions from './TopQuestions';
 import RecentQuestions from './RecentQuestions';
+import { nanoid } from 'nanoid';
 
 function Feedback(props) {
   const {option} = props;
@@ -16,9 +17,9 @@ function Feedback(props) {
   };
 
   const printTable = ()=>{
-    if(option==='3' || option==='4') return (<ScoreInfo option={option} /> );
-    else if(option==='5' || option==='6') return (<TopQuestions option={option} /> );
-    else return (<RecentQuestions option={option} /> );
+    if(option==='3' || option==='4') return (<ScoreInfo option={option} key={nanoid()} /> );
+    else if(option==='5' || option==='6') return (<TopQuestions option={option} key={nanoid()} /> );
+    else return (<RecentQuestions option={option} key={nanoid()} /> );
   }
   
   return (

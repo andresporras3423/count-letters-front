@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {showTopQuestions} from './../data/questionData';
 
 function TopQuestions(props) {
-    const {option} = props;
+    const {option, key} = props;
     const [listData, setListData] = useState([]);
 
   useEffect(async () => {
@@ -10,7 +10,7 @@ function TopQuestions(props) {
     if(option==='5') data = await showTopQuestions(false);
     else if(option==='6') data = await showTopQuestions(true);
     setListData(data);
-  }, [listData]);
+  }, [key]);
 
     return (
         <table className="table tableContent">
