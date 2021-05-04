@@ -16,7 +16,6 @@ const [page, setPage] = useState('0');
 
 useEffect(async () => {
   const data = await getConfigData();
-  console.log(data);
   handleGetConfig({
     'whitespaces': data['whitespaces'],
     'total_letters': data['total_letters'],

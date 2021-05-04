@@ -8,7 +8,6 @@ function ScoreInfo(props) {
     let data=[];
     if(option==='3')  data = await getScoreTop(); 
     else if(option==='4') data = await getScoreRecents();
-    console.log(data);
     setListData(data);
   }, [listData]);
     return (

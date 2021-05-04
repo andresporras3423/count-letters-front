@@ -9,7 +9,6 @@ function RecentQuestions(props) {
     let data=[];
     if(option==='7') data = await showRecentQuestions(false);
     else if(option==='8') data = await showRecentQuestions(true);
-    console.log(data);
     setListData(data);
   }, [listData]);
     return (
