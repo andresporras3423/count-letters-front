@@ -68,13 +68,16 @@
 .tableContainer > * {
   grid-column: 2;
 }
-/* .settings{
+
+.settings{
   width: 300px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
   margin-bottom: 25px;
 }
+
+/* 
 
 .tableContent {
   table-layout: fixed;
