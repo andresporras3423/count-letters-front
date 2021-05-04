@@ -9,5 +9,17 @@ export const getScoreRecents = async () => {
       const data = await response.json();
       return data;
   };
+
+  export const getScoreTop = async () => {
+    const response = await fetch(`https://lit-shelf-55398.herokuapp.com/score/show_top`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      return data;
+  };
   
-  export default {getScoreRecents};
+  export default {getScoreRecents, getScoreTop};

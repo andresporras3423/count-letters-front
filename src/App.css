@@ -60,13 +60,33 @@
   padding: 25px;
 }
 
-.settings{
+.tableContainer{
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+.tableContainer > * {
+  grid-column: 2;
+}
+/* .settings{
   width: 300px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
   margin-bottom: 25px;
 }
+
+.tableContent {
+  table-layout: fixed;
+}
+.tableContent2 > thead > tr > *,
+.tableContent2 > tbody > tr > * {
+  width: 25%;
+}  */
+
+/* i {
+  cursor: pointer;
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
