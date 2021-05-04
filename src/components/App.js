@@ -28,7 +28,7 @@ const setSelectedPage = ()=>{
   if(page==='0') return (<Instructions/>);
   else if(page==='1') return (<Play/>);
   else if(page==='2') return (<Settings/>);
-  else  return (<Feedback/>);
+  else  return (<Feedback option={page} />);
 }
   return (
     <div className="App">

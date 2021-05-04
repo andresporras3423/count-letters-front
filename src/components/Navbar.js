@@ -13,14 +13,14 @@ function Navbar(props) {
       <button className="subnavbtn" onClick={()=>setPage('2')}>Settings</button>
     </div> 
     <div className="subnav">
-      <button className="subnavbtn" onClick={()=>setPage('3')}>Game feedback <i className="fa fa-caret-down"></i></button>
+      <button className="subnavbtn">Game feedback <i className="fa fa-caret-down"></i></button>
       <div className="subnav-content">
-      <button>Top scores</button>
-      <button>Recent scores</button>
-      <button>Most errors</button>
-      <button>Most corrects</button>
-      <button>Recent errors</button>
-      <button>Recent corrects</button>
+      <button onClick={()=>setPage('3')}>Top scores</button>
+      <button onClick={()=>setPage('4')}>Recent scores</button>
+      <button onClick={()=>setPage('5')}>Most errors</button>
+      <button onClick={()=>setPage('6')}>Most corrects</button>
+      <button onClick={()=>setPage('7')}>Recent errors</button>
+      <button onClick={()=>setPage('8')}>Recent corrects</button>
       </div>
     </div>
   </div>
