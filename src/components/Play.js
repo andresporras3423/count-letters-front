@@ -11,8 +11,10 @@ function Play(props) {
   const [word, setWord] = useState('');
   const [sol, setSol, refSol] = useState(0);
   const [answer, setAnswer] = useState('');
+  const [counterQuestions, setCounterQuestions] = useState(0);
   const [corrects, setCorrects, refCorrects] = useState(0);
   const [char, setChar] = useState('');
+  const [messageAnswer, setMessageAnswer] = useState('');
 
   const updateCurrentTime = ()=>{
     const new_value = Math.round((new Date() - initialTime.valueOf())/1000);
@@ -21,6 +23,7 @@ function Play(props) {
   };
   
   const question = ()=>{
+    setCounterQuestions(counterQuestions+1);
     let alphabet= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     let subAlphabet =[];
     let nWord='';
@@ -48,7 +51,10 @@ function Play(props) {
     console.log(`answer: ${answer}, sol: ${sol}`)
     if(answer===""+sol){
       setCorrects(refCorrects.current+1);
-      console.log(refCorrects.current);
+      setMessageAnswer("correct answer");
+    }
+    else{
+      setMessageAnswer(`Incorrect, the solution was ${sol}`);
     }
     setSol(0);
     setAnswer('');
@@ -61,8 +67,9 @@ function Play(props) {
   }, [])
     return (
       <div>
+        <h4>Total questions: {questions}, whitespaces: {whitespaces}, letters: {total_letters}</h4>
           <h4>Total time: {totalTime}</h4>
-          <h4>Score: {refCorrects.current}/{questions}</h4>
+          <h4>Score: {refCorrects.current}/{counterQuestions}</h4>
           <h4>How many?: {char}</h4>
           <div>
             <pre dangerouslySetInnerHTML={{ __html: word }}></pre>
@@ -71,6 +78,7 @@ function Play(props) {
             <input type="text" value={answer} onChange={(el)=>setAnswer(el.target.value)}></input>
             <button onClick={nextQuestion}>submit</button>
           </div>
+          <div>{messageAnswer}</div>
       </div>
     );
   }
