@@ -71,8 +71,12 @@ function PlayContent(props) {
   };
 
   useEffect(()=>{
+    const abortController = new AbortController();
     question();
     updateCurrentTime();
+    return function cleanup() {
+      abortController.abort();
+    };
   }, []);
 
   const displayContent = ()=>{
