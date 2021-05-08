@@ -30,7 +30,7 @@ function Settings(props) {
     setConfigData((()=>{
       return {
         ...configData,
-        [property]: val,
+        [property]: parseInt(val),
       }
     })());
     setMessageStatus(0);
