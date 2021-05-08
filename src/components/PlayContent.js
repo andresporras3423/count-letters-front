@@ -20,12 +20,12 @@ function PlayContent(props) {
   const [playingGame, setPlayingGame, refPlayingGame] = useState(1);
   const [position, setPosition, refPosition] = useState(null);
   const inputRef = useRef(null);
+  const divRef = useRef(null);
 
   const updateCurrentTime = ()=>{
     if(refPlayingGame.current!==1){
       return;
     }
-    //console.log(playingGame);
     const new_value = Math.round((new Date() - initialTime.valueOf())/1000);
     setTotalTime(new_value);
     setTimeout(updateCurrentTime, 1000);
@@ -57,13 +57,6 @@ function PlayContent(props) {
     });
   };
 
-  const handleKeypress = (e)=>{
-    debugger;
-    if (e.charCode === 13) {
-      nextQuestion();
-    }
-  };
-
   const nextQuestion = async ()=>{
     if(answer===""+sol){
       setCorrects(refCorrects.current+1);
@@ -78,6 +71,7 @@ function PlayContent(props) {
       const newScore = await saveScore(totalTime, refCorrects.current);
       const nPosition = await showPosition(newScore.id);
       setPosition(nPosition[0].num);
+      divRef.current?.focus();
       return;
     }
     setSol(0);
@@ -106,7 +100,7 @@ function PlayContent(props) {
             <pre dangerouslySetInnerHTML={{ __html: word }}></pre>
           </div>
           <div className="form-group play-form">
-            <input className='form-control' onKeyPress={handleKeypress} ref={inputRef} type="text" value={answer} onChange={(el)=>setAnswer(el.target.value)}></input>
+            <input className='form-control' onKeyPress={(e)=>{if (e.charCode === 13) nextQuestion()}} ref={inputRef} type="text" value={answer} onChange={(el)=>setAnswer(el.target.value)}></input>
             <button className='btn btn-dark' onClick={nextQuestion}>submit</button>
           </div>
           <div>{messageAnswer}</div>
@@ -114,13 +108,13 @@ function PlayContent(props) {
       )
     }
     return (
-      <>
+      <div tabindex="0" onKeyPress={(e)=>{if (e.charCode === 13) forceUpdate()}} ref={divRef}>
       <h4>Final time: {totalTime}</h4>
       <h4>Final corrects: {refCorrects.current}/{counterQuestions}</h4>
       <h4>Final score: {totalTime*(2**(questions-refCorrects.current))}</h4>
       <h4>Position: {refPosition.current}</h4>
       <button className='btn btn-dark' onClick={forceUpdate}>Play again</button>
-      </>
+      </div>
     );
   };
 
