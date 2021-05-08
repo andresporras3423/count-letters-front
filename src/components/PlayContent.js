@@ -2,6 +2,8 @@ import {useEffect} from 'react';
 import useState from 'react-usestateref';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {saveScore, showPosition} from './../data/scoreData';
+import {saveQuestion} from './../data/questionData';
 
 function PlayContent(props) {
   const {whitespaces, total_letters, questions, forceUpdate} = props;
@@ -16,6 +18,7 @@ function PlayContent(props) {
   const [char, setChar] = useState('');
   const [messageAnswer, setMessageAnswer] = useState('');
   const [playingGame, setPlayingGame, refPlayingGame] = useState(1);
+  const [position, setPosition, refPosition] = useState(null);
 
   const updateCurrentTime = ()=>{
     if(refPlayingGame.current!==1){
@@ -52,8 +55,7 @@ function PlayContent(props) {
     });
   }
 
-  const nextQuestion = ()=>{
-    //console.log(`answer: ${answer}, sol: ${sol}`);
+  const nextQuestion = async ()=>{
     if(answer===""+sol){
       setCorrects(refCorrects.current+1);
       setMessageAnswer("correct answer");
@@ -61,8 +63,12 @@ function PlayContent(props) {
     else{
       setMessageAnswer(`Incorrect, the solution was ${sol}`);
     }
+    await saveQuestion(char);
     if(counterQuestions===questions){
       setPlayingGame(0);
+      const newScore = await saveScore(totalTime, refCorrects.current);
+      const nPosition = await showPosition(newScore.id);
+      setPosition(nPosition[0].num);
       return;
     }
     setSol(0);
@@ -103,6 +109,7 @@ function PlayContent(props) {
       <h4>Final time: {totalTime}</h4>
       <h4>Final corrects: {refCorrects.current}/{counterQuestions}</h4>
       <h4>Final score: {totalTime*(2**(questions-refCorrects.current))}</h4>
+      <h4>Position: {refPosition.current}</h4>
       <button onClick={forceUpdate}>Play again</button>
       </>
     );
