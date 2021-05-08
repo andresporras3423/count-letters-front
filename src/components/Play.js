@@ -19,7 +19,7 @@ function Play() {
   };
   
     return (
-      <div className="play-component">
+      <div className="margin-div">
         {showPlayContent()}
       </div>
     );
