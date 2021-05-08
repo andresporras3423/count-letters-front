@@ -19,7 +19,7 @@ function Play() {
   };
   
     return (
-      <div class="play-component">
+      <div className="play-component">
         {showPlayContent()}
       </div>
     );

@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 import useState from 'react-usestateref';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -19,6 +19,7 @@ function PlayContent(props) {
   const [messageAnswer, setMessageAnswer] = useState('');
   const [playingGame, setPlayingGame, refPlayingGame] = useState(1);
   const [position, setPosition, refPosition] = useState(null);
+  const inputRef = useRef(null);
 
   const updateCurrentTime = ()=>{
     if(refPlayingGame.current!==1){
@@ -31,6 +32,7 @@ function PlayContent(props) {
   };
   
   const question = ()=>{
+    inputRef.current?.focus();
     setCounterQuestions(counterQuestions+1);
     let alphabet= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     let subAlphabet =[];
@@ -53,7 +55,14 @@ function PlayContent(props) {
       }
       setWord(nWord);
     });
-  }
+  };
+
+  const handleKeypress = (e)=>{
+    debugger;
+    if (e.charCode === 13) {
+      nextQuestion();
+    }
+  };
 
   const nextQuestion = async ()=>{
     if(answer===""+sol){
@@ -97,7 +106,7 @@ function PlayContent(props) {
             <pre dangerouslySetInnerHTML={{ __html: word }}></pre>
           </div>
           <div className="form-group play-form">
-            <input className='form-control' type="text" value={answer} onChange={(el)=>setAnswer(el.target.value)}></input>
+            <input className='form-control' onKeyPress={handleKeypress} ref={inputRef} type="text" value={answer} onChange={(el)=>setAnswer(el.target.value)}></input>
             <button className='btn btn-dark' onClick={nextQuestion}>submit</button>
           </div>
           <div>{messageAnswer}</div>
