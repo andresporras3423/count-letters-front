@@ -91,14 +91,14 @@ function PlayContent(props) {
         <>
         <h4>Total questions: {questions}, whitespaces: {whitespaces}, letters: {total_letters}</h4>
           <h4>Total time: {totalTime}</h4>
-          <h4>total corrects: {refCorrects.current}/{counterQuestions}</h4>
+          <h4>total corrects: {refCorrects.current}/{counterQuestions-1}</h4>
           <h4>How many?: {char}</h4>
           <div>
             <pre dangerouslySetInnerHTML={{ __html: word }}></pre>
           </div>
-          <div>
-            <input type="text" value={answer} onChange={(el)=>setAnswer(el.target.value)}></input>
-            <button onClick={nextQuestion}>submit</button>
+          <div className="form-group play-form">
+            <input className='form-control' type="text" value={answer} onChange={(el)=>setAnswer(el.target.value)}></input>
+            <button className='btn btn-dark' onClick={nextQuestion}>submit</button>
           </div>
           <div>{messageAnswer}</div>
         </>
@@ -110,7 +110,7 @@ function PlayContent(props) {
       <h4>Final corrects: {refCorrects.current}/{counterQuestions}</h4>
       <h4>Final score: {totalTime*(2**(questions-refCorrects.current))}</h4>
       <h4>Position: {refPosition.current}</h4>
-      <button onClick={forceUpdate}>Play again</button>
+      <button className='btn btn-dark' onClick={forceUpdate}>Play again</button>
       </>
     );
   };

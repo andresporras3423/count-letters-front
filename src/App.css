@@ -112,6 +112,16 @@
   color: #61dafb;
 }
 
+.play-form{
+  display: grid;
+  width: 300px;
+  grid-template-columns: 2fr 1fr;
+}
+
+.play-component{
+  margin-left: 25px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
