@@ -11,6 +11,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - In feedback you can see the global stats of the game. The score stats are filtered using the current settings (number of questions and letters). On the other hand, the stats for questions are not filtered.
 - The 'Play' tab is... to play the game. That's it, hope you like it.
 
+## live demo
+
+[Live Demo](https://count-letters-andres-porras.netlify.app/)
+
 ## Backend
 
 - The backend was deployed in Heroku and build using Ruby on Rails and PostgreSQ.
