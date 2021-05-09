@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![screenshot](./screenshot.png)
+
 ## Description
 
 - count letters game is self descriptive, count how many of the specified letter you can see in the matrix.
@@ -28,11 +30,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Ruby
 - Ruby on Rails
 - PostgreSQL
-- Netlify
+- Heroku
 
 ## Author
 
 **Oscar Russi**
+
 - Github: [@andresporras3423](https://github.com/andresporras3423/)
 - Linkedin: [Oscar Russi](https://www.linkedin.com/in/oscar-andres-russi-porras/)
 - Twitter: [@OscarRussi1](https://twitter.com/OscarRussi1)
