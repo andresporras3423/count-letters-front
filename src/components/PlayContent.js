@@ -51,7 +51,7 @@ function PlayContent(props) {
       for(let k=0;k<whitespaces;k++) nWord+=" ";
       if((j+1)%letters_x==0){
         nWord+="</span>";
-        for(let k=0;k<whitespaces;k++) nWord+="<br/>";
+        if(j+1<total_letters) for(let k=0;k<whitespaces;k++) nWord+="<br/>";
       }
       setWord(nWord);
     });
