@@ -58,6 +58,7 @@ function PlayContent(props) {
   };
 
   const nextQuestion = async ()=>{
+    if(isNaN(parseInt(answer))) return;
     if(answer===""+sol){
       setCorrects(refCorrects.current+1);
       setMessageAnswer("correct answer");
