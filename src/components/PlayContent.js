@@ -100,7 +100,7 @@ function PlayContent(props) {
             <pre dangerouslySetInnerHTML={{ __html: word }}></pre>
           </div>
           <div className="form-group play-form">
-            <input className='form-control' onKeyPress={(e)=>{if (e.charCode === 13) nextQuestion()}} ref={inputRef} type="text" value={answer} onChange={(el)=>setAnswer(el.target.value)}></input>
+            <input className='form-control' onKeyPress={(e)=>{if (e.charCode === 13) nextQuestion()}} ref={inputRef} type="number" value={answer} onChange={(el)=>setAnswer(el.target.value)}></input>
             <button className='btn btn-dark' onClick={nextQuestion}>submit</button>
           </div>
           <div>{messageAnswer}</div>
