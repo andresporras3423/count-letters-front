@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { getConfig } from '../actions/index';
 
 function App(props) {
-  const {handleGetConfig} = props;
+  const {handleGetConfig, total_letters} = props;
 const [page, setPage] = useState('0');
 
 useEffect(async () => {
@@ -29,13 +29,18 @@ const setSelectedPage = ()=>{
   else if(page==='2') return (<Settings/>);
   else  return (<Feedback option={page} />);
 }
-  return (
+if(total_letters===0) return <></>
+else return (
     <div className="App">
       <Navbar setPage={setPage}/>
       {setSelectedPage()}
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  total_letters: state.config.whitespaces,
+  });
 
 const mapDispatchToProps = dispatch => ({
   handleGetConfig: nConfig => {
@@ -45,10 +50,12 @@ const mapDispatchToProps = dispatch => ({
 
 App.propTypes = {
   handleGetConfig: PropTypes.func,
+  total_letters: PropTypes.number,
 };
 
 App.defaultProps = {
   handleGetConfig: null,
+  total_letters: 0,
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

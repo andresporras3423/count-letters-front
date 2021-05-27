@@ -45,11 +45,11 @@ function Settings(props) {
       <div className="settings-parent">
         <div className="settings">
         <label>whitespaces: </label>
-          <input type="number" value={configData['whitespaces']} onChange={(e)=>typeSetting('whitespaces', e.target.value)}></input>
+          <input type="number" min="0" max="4" value={configData['whitespaces']} onChange={(e)=>typeSetting('whitespaces', e.target.value)}></input>
           <label>total letters:</label>
-          <input type="number" value={configData['total_letters']}  onChange={(e)=>typeSetting('total_letters', e.target.value)}></input>
+          <input type="number" min="8" max="128" value={configData['total_letters']}  onChange={(e)=>typeSetting('total_letters', e.target.value)}></input>
           <label>questions:</label>
-          <input type="number" value={configData['questions']}  onChange={(e)=>typeSetting('questions', e.target.value)}></input>
+          <input type="number" min="3" max="100" value={configData['questions']}  onChange={(e)=>typeSetting('questions', e.target.value)}></input>
           <button className="btn btn-dark" onClick={updateSettings}>Update</button>
         </div>
           {successMessage()}
