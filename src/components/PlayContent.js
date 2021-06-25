@@ -66,7 +66,7 @@ function PlayContent(props) {
     else{
       setMessageAnswer(`Incorrect, the solution was ${sol}`);
     }
-    await saveQuestion(char);
+    await saveQuestion(char, answer===""+sol);
     if(counterQuestions===questions){
       setPlayingGame(0);
       const newScore = await saveScore(totalTime, refCorrects.current);
